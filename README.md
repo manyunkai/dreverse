@@ -30,4 +30,4 @@ DReverse 用于与 LAN 背后的主机建立 TCP 连接通道，从而方便公�
 
 如 python slaver.py -l 127.0.0.1:22 -e 192.168.204.1:50067  -s nN31mnOq0ek4UBXxecl4WnLeCoYOfTQJ -t 120 --log-level DEBUG
 
-默认情况下，master 和 slave 之间将总是建立并维护 2 个空闲连接，当空闲连接被占用时，会再次补充空闲连接。
+默认情况下，master 和 slave 之间将总是建立并维护 5 个空闲连接，当空闲连接被占用时，会再次补充空闲连接。
