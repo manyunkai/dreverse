@@ -16,7 +16,7 @@ if py_version == '3':
     unicode = str
 
 
-class Crypto:
+class DCrypto:
     def __init__(self, key, mode=AES.MODE_CFB):
         self.key = key
         self.mode = mode
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     print('Plain text:', t)
     print('Key:', k)
 
-    crypto = Crypto(k)
+    crypto = DCrypto(k)
     e = crypto.encrypt(t)
     print(type(e))
     print('Encrypted:', e)

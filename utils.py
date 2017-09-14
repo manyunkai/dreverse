@@ -16,7 +16,7 @@ import platform
 import logging
 from hashlib import md5
 
-from crypto import Crypto
+from dcrypto import DCrypto
 
 
 # 连接测试请求数据
@@ -83,7 +83,7 @@ def generate_ping_data(encrypt_key=''):
     """
 
     hello = get_random_md5()
-    raw = PING_SENDING_DATA.format(Crypto(encrypt_key).encrypt(hello) if encrypt_key else hello).encode('utf8')
+    raw = PING_SENDING_DATA.format(DCrypto(encrypt_key).encrypt(hello) if encrypt_key else hello).encode('utf8')
     return hello, raw
 
 
@@ -103,7 +103,7 @@ def parse_ping_data(data, encrypt_key=''):
         data = None
     else:
         if encrypt_key:
-            data = Crypto(encrypt_key).decrypt(data).decode()
+            data = DCrypto(encrypt_key).decrypt(data).decode()
 
     return data
 
@@ -184,7 +184,7 @@ def pack_data(data, encrypt_key=''):
     """
 
     if encrypt_key:
-        data = Crypto(encrypt_key).encrypt(data)
+        data = DCrypto(encrypt_key).encrypt(data)
 
     return TRANSFER_PACK_DATA.format(data).encode('utf8')
 
@@ -207,7 +207,7 @@ def unpack_data(data, encrypt_key=''):
         raise ValueError('Unpack received data error.')
 
     if encrypt_key:
-        data = Crypto(encrypt_key).decrypt(data)
+        data = DCrypto(encrypt_key).decrypt(data)
 
     return data
 
